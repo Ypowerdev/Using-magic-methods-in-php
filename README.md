@@ -1,4 +1,4 @@
-# magic-methods-
+# Using magic methods in PHP 
 Применение магических методов в php 
 
 
