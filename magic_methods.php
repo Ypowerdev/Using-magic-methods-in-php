@@ -5,19 +5,19 @@
 
 class Ticket
 {
-    protected $idticket;
+    protected $idTicket;
     public $from;
     public $to;
-    public $price;
-    public $name;
+    public $ticketPrice;
+    public $passangerName;
 
     public function __construct($from, $to, $price, $name)
     {
-        $this->idticket = uniqid();
+        $this->idTicket = uniqid();
         $this->from = $from;
         $this->to = $to;
-        $this->price = $price;
-        $this->name = $name;
+        $this->ticketPrice = $price;
+        $this->passangerName = $name;
     }
 
     public function __toString()
@@ -26,9 +26,9 @@ class Ticket
        <html> 
        <div class="ticket">
        <h2>{$this->from} - {$this->to}</h2>
-       <p> Номер билета № {$this->idticket}</p>
-       <p>Пассажир: <strong>{$this ->name}</strong>
-       <p> Цена: <strong> {$this->price} </strong></p>
+       <p> Номер билета № {$this->idTicket}</p>
+       <p>Пассажир: <strong>{$this ->passangerName}</strong>
+       <p> Цена: <strong> {$this->ticketPrice} </strong></p>
        <div> 
        </html>
 HTML; 
@@ -48,13 +48,14 @@ echo $ticket1;
  */
 // echo $ticket1, "<hr>";
 
-/* Задача #2. Есть класс Sequence. Если создать экземпляр через new Sequence(10,20,5), то предполагается найти последователность чисел от 10 до 20 за 5 шагов, то есть: 10, 12, 14, 16, 18, 20. 
 
-Реализуйте у него магический метод __invoke так, чтобы при объекта как функции выводилась последовательность чисел */
+/* Задача #2. Есть класс Sequence. Если создать экземпляр через new Sequence(10,20,5), 
+то предполагается найти последователность чисел от 10 до 20 за 5 шагов, то есть: 10, 12, 14, 16, 18, 20. 
+Реализуйте у него магический метод __invoke так, чтобы при вызове объекта как функции выводилась последовательность чисел */
 
 class Sequence
 {
-    public array $list = [];
+    public array $listOfNumbers = [];
     public function __construct($from, $to, $steps)
     {
         $this->from = $from;
@@ -65,8 +66,8 @@ class Sequence
     public function __invoke ()
     {
       $step = ($this->to - $this->from)/$this->steps;
-      $this->list = range($this->from, $this->to, $step);              
-      return implode(',', $this->list);
+      $this->listOfNumbers = range($this->from, $this->to, $step);              
+      return implode(',', $this->listOfNumbers);
     }
 }
 
